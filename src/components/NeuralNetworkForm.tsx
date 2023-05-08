@@ -6,18 +6,18 @@ import SubmitButton from './SubmitButton';
 
 interface FormValues {
     epochs: number;
-    activationFunc: string;
-    hiddenSize: number;
-    learningRate: number;
+    activation_func: string;
+    hidden_size: number;
+    learning_rate: number;
 }
 
 const NeuralNetworkForm = () => {
     const [data, setData] = useState<any>(null)
     const [formValues, setFormValues] = useState<FormValues>({
-        activationFunc: "tanh",
+        activation_func: "tanh",
         epochs: 100,
-        hiddenSize: 8,
-        learningRate: 0.01,
+        hidden_size: 8,
+        learning_rate: 0.01,
     })
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -53,7 +53,7 @@ const NeuralNetworkForm = () => {
                     max={1000}
                     min={1}
                     dataType='string'
-                    value={formValues.activationFunc}
+                    value={formValues.activation_func}
                     handleChange={handleChange}
                 />
                 <FormEntry
@@ -73,7 +73,7 @@ const NeuralNetworkForm = () => {
                     max={24}
                     min={2}
                     dataType='number'
-                    value={formValues.hiddenSize}
+                    value={formValues.hidden_size}
                     handleChange={handleChange}
                 />
                 <FormEntry
@@ -83,7 +83,7 @@ const NeuralNetworkForm = () => {
                     max={2}
                     min={0.00001}
                     dataType='float'
-                    value={formValues.learningRate}
+                    value={formValues.learning_rate}
                     handleChange={handleChange}
                 />
                 <SubmitButton txt='Run Neural Network' />
