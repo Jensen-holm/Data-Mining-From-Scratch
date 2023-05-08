@@ -3,14 +3,14 @@ import axios from 'axios';
 
 interface FormValues {
     k: number;
-    max_iter: number;
+    maxIter: number;
 }
 
 const KMeansForm = () => {
     const [data, setData] = useState<any>(null);
     const [formValues, setFormValues] = useState<FormValues>({
         k: 3,
-        max_iter: 100,
+        maxIter: 100,
     });
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -62,7 +62,7 @@ const KMeansForm = () => {
                         name="max_iter"
                         type="number"
                         min={1}
-                        value={formValues.max_iter}
+                        value={formValues.maxIter}
                         onChange={handleChange}
                     />
                 </div>
