@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import axios from 'axios';
 
-import FormEntry from './FormEntry';
-import SubmitButton from './SubmitButton';
+import FormEntry from '../FormEntry';
+import SubmitButton from '../SubmitButton';
 
 interface FormValues {
     epochs: number;
