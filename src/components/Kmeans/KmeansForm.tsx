@@ -1,8 +1,9 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 import axios from 'axios';
-
 import SubmitButton from '../SubmitButton';
 import FormEntry from '../FormEntry';
+import Loading from '../Loading';
 
 interface FormValues {
     k: number;
@@ -10,7 +11,9 @@ interface FormValues {
 }
 
 const KMeansForm = () => {
-    const [data, setData] = useState<any>(null);
+    const router = useRouter();
+    const [loading, setLoading] = useState<boolean>(false);
+    const [_, setData] = useState<any>(null);
     const [formValues, setFormValues] = useState<FormValues>({
         k: 3,
         max_iter: 100,
@@ -25,16 +28,15 @@ const KMeansForm = () => {
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
+        setLoading(true);
         const result = await axios.post<any>('https://data-mining-from-scratch-backend.onrender.com/', {
             algorithm: 'kmeans-clustering',
             arguments: formValues,
         });
         setData(result.data);
+        setLoading(false)
+        router.push('/kmeans-results')
     };
-
-    if (data) {
-        console.log(data);
-    }
 
     return (
         <div className="w-96 p-8 bg-gray-100 rounded-md">
@@ -62,6 +64,7 @@ const KMeansForm = () => {
                 />
                 <SubmitButton txt="Run Kmeans Clustering"></SubmitButton>
             </form>
+            {loading && <Loading />}
         </div>
     );
 };
