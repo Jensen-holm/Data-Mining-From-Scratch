@@ -37,9 +37,6 @@ const NeuralNetworkForm = () => {
     };
 
     if (data) {
-        // in the future, instead of console.logging this,
-        // make and render a chart js plot using a different
-        // component
         console.log(data)
     }
 
