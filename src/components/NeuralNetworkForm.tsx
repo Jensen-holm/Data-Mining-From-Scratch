@@ -28,12 +28,13 @@ const NeuralNetworkForm = () => {
     };
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-        const result = await axios.post<any>('https://data-mining-from-scratch-onrender.com/', {
-            algorithm: 'neural-netwowrk',
+        event.preventDefault();
+        const result = await axios.post<any>('https://data-mining-from-scratch-backend.onrender.com/', {
+            algorithm: 'neural-network',
             arguments: formValues,
         });
         setData(result.data);
-    }
+    };
 
     if (data) {
         // in the future, instead of console.logging this,

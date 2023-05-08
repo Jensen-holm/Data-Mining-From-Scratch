@@ -30,7 +30,6 @@ const FormEntry = ({ handleChange, dataType, min, max, id, name, value, labelTex
             />
         </div>
     )
-
 }
 
 export default FormEntry;
