@@ -7,40 +7,50 @@ import SubmitButton from '../SubmitButton';
 import Loading from '../Loading';
 
 interface FormValues {
-    epochs: number;
-    activation_func: string;
-    hidden_size: number;
-    learning_rate: number;
+    epochs?: string | string[];
+    activation_func?: string | string[];
+    hidden_size?: string | string[];
+    learning_rate?: string | string[];
 }
 
-const NeuralNetworkForm = () => {
+const NeuralNetworkForm = ({ epochs, activation_func, hidden_size, learning_rate }: FormValues = {}) => {
     const router = useRouter();
     const [loading, setLoading] = useState<boolean>(false);
     const [_, setData] = useState<any>(null)
     const [formValues, setFormValues] = useState<FormValues>({
-        activation_func: "tanh",
-        epochs: 100,
-        hidden_size: 8,
-        learning_rate: 0.01,
-    })
+        activation_func: activation_func ?? "tanh",
+        epochs: epochs ?? "100",
+        hidden_size: hidden_size ?? "8",
+        learning_rate: learning_rate ?? "0.01",
+    });
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value, type } = event.target;
         setFormValues({
             ...formValues,
-            [event.target.name]: Number(event.target.value),
+            [name]: type === 'number' ? Number(value) : value,
         });
     };
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setLoading(true);
+        const { activation_func, ...rest } = formValues;
+        const convertedValues = Object.fromEntries(
+            Object.entries(rest).map(([key, value]) => [key, Number(value)])
+        );
         const result = await axios.post<any>('https://machine-learning-from-scratch-jensen.onrender.com', {
             algorithm: 'neural-network',
-            arguments: formValues,
+            arguments: {
+                ...convertedValues,
+                activation_func
+            },
         });
         setData(result.data);
         setLoading(false);
 
+        // eventually we want to push the form values too so that
+        // the user sees the output and paraters for each similar request
         router.push({
             pathname: "/neural-network-results",
             query: result.data,

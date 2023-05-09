@@ -6,9 +6,9 @@ import NeuralNetworkForm from '@/components/NeuralNetwork/NeuralNetworkForm';
 import Plot from '@/components/Plot';
 
 
-export default function Kmeans() {
+export default function NeuralNetworkResults() {
     const router = useRouter();
-    const { plot } = router.query;
+    const { plot, mse, learning_rate, epochs, hidden_size, activation_func } = router.query;
     return (
         <>
             <Head>
@@ -21,7 +21,13 @@ export default function Kmeans() {
                 <NavBar />
             </div>
             <div className="flex flex-col items-center justify-center pt-16 max-w-screen-lg w-full mx-auto">
-                <NeuralNetworkForm />
+                <NeuralNetworkForm
+                    learning_rate={learning_rate}
+                    epochs={epochs}
+                    hidden_size={hidden_size}
+                    activation_func={activation_func}
+                />
+                <h4>Mean Squared Error: {mse}</h4>
                 {plot && <Plot plotData={plot} />}
             </div>
         </>
