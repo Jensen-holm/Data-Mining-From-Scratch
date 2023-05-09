@@ -29,16 +29,15 @@ const KMeansForm = () => {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setLoading(true);
-        const result = await axios.post<any>('https://data-mining-from-scratch-backend.onrender.com/', {
+        const result = await axios.post<any>('http://127.0.0.1:5000/', {
             algorithm: 'kmeans-clustering',
             arguments: formValues,
         });
         setData(result.data);
         setLoading(false)
-        const encodedResult = encodeURIComponent(JSON.stringify(result.data));
         router.push({
             pathname: "kmeans-results",
-            query: {result: encodedResult},
+            query: result.data,
         })
     };
 
