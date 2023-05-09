@@ -11,9 +11,13 @@ export default function Kmeans() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <NavBar />
-            <div className="flex flex-col items-center justify-center h-screen">
-                <KMeansForm />
+            <div className="relative">
+                <NavBar />
+            </div>
+            <div className="pt-16">
+                <div className="flex flex-col items-center justify-center h-screen">
+                    <KMeansForm />
+                </div>
             </div>
         </>
     )

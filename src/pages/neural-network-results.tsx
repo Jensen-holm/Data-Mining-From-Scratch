@@ -20,7 +20,7 @@ export default function NeuralNetworkResults() {
             </Head>
             <div className="relative">
                 <NavBar />
-                <div className="flex flex-col items-center justify-center h-screen pt-20">
+                <div className="flex flex-col items-center justify-center h-screen sm:pt-20">
                     <NeuralNetworkForm />
                     <div className="mt-8 text-center">
                         <h5>Mean Squared Error: {mse}</h5>
