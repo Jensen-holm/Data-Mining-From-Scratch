@@ -29,7 +29,7 @@ const KMeansForm = () => {
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setLoading(true);
-        const result = await axios.post<any>('http://127.0.0.1:5000/', {
+        const result = await axios.post<any>('https://machine-learning-from-scratch-jensen.onrender.com', {
             algorithm: 'kmeans-clustering',
             arguments: formValues,
         });
