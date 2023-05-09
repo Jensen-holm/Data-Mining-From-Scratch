@@ -12,7 +12,9 @@ export default function Kmeans() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <NavBar />
-            <KMeansForm />
+            <div className="flex flex-col items-center justify-center h-screen">
+                <KMeansForm />
+            </div>
         </>
     )
 }

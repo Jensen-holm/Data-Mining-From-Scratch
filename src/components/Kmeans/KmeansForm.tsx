@@ -35,7 +35,11 @@ const KMeansForm = () => {
         });
         setData(result.data);
         setLoading(false)
-        router.push('/kmeans-results')
+        const encodedResult = encodeURIComponent(JSON.stringify(result.data));
+        router.push({
+            pathname: "kmeans-results",
+            query: {result: encodedResult},
+        })
     };
 
     return (
