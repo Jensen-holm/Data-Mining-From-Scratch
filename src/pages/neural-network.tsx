@@ -14,8 +14,10 @@ export default function NeuralNetwork() {
             <div className="relative">
                 <NavBar />
             </div>
-            <div className="flex flex-col items-center justify-center h-screen">
-                <NeuralNetworkForm />
+            <div className="pt-1/6">
+                <div className="flex flex-col items-center justify-center h-screen">
+                    <NeuralNetworkForm />
+                </div>
             </div>
         </>
     )

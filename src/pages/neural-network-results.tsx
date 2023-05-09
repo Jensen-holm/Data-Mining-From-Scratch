@@ -20,7 +20,7 @@ export default function Kmeans() {
             <div className="relative">
                 <NavBar />
             </div>
-            <div className="flex flex-col items-center justify-center pt-24 max-w-screen-lg w-full mx-auto">
+            <div className="flex flex-col items-center justify-center pt-16 max-w-screen-lg w-full mx-auto">
                 <NeuralNetworkForm />
                 {plot && <Plot plotData={plot} />}
             </div>

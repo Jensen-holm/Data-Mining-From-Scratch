@@ -17,7 +17,7 @@ export default function Kmeans() {
             </Head>
             <div className="relative">
                 <NavBar />
-                <div className="flex flex-col items-center justify-center pt-24 max-w-screen-lg w-full mx-auto">
+                <div className="flex flex-col items-center justify-center pt-16 max-w-screen-lg w-full mx-auto">
                     <KMeansForm />
                     {plot && <Plot plotData={plot} />}
                 </div>
