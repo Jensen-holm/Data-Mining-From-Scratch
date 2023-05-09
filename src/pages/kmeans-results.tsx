@@ -10,6 +10,11 @@ export default function Kmeans() {
     const encodedResult = router.query.result as string;
     const decodedResult = encodedResult ? JSON.parse(decodeURIComponent(encodedResult)) : null;
 
+    // Check if 'clusters' property exists in decoded result data
+    if (!decodedResult.clusters) {
+        return null;
+    }
+
     // convert decodedResult into an array of Cluster objects
     const clusters: Cluster[] = decodedResult.clusters.map((clusterData: any, index: number) => ({
         id: index,
