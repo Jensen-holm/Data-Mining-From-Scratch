@@ -1,7 +1,7 @@
 import Image from "next/image";
 
 interface Props {
-    plotData: string;
+    plotData: string | string[];
 }
 
 const Plot = ({ plotData }: Props) => {
