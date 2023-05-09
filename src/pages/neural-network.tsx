@@ -11,7 +11,9 @@ export default function NeuralNetwork() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <NavBar />
+            <div className="relative">
+                <NavBar />
+            </div>
             <div className="flex flex-col items-center justify-center h-screen">
                 <NeuralNetworkForm />
             </div>

@@ -58,7 +58,7 @@ const Dropdown = ({ title }: DropdownProps) => {
 
 const Nav: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const navRef = useRef(null);
+    const navRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const handleOutsideClick = (event: MouseEvent) => {

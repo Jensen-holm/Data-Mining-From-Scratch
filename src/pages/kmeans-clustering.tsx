@@ -14,7 +14,7 @@ export default function Kmeans() {
             <div className="relative">
                 <NavBar />
             </div>
-            <div className="pt-16">
+            <div className="pt-1/6">
                 <div className="flex flex-col items-center justify-center h-screen">
                     <KMeansForm />
                 </div>
