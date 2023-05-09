@@ -6,7 +6,7 @@ import Plot from '@/components/Plot';
 
 export default function Kmeans() {
     const router = useRouter();
-    const { plot } = router.query;
+    const { plot, k, max_iter } = router.query;
     return (
         <>
             <Head>
@@ -18,7 +18,10 @@ export default function Kmeans() {
             <div className="relative">
                 <NavBar />
                 <div className="flex flex-col items-center justify-center pt-16 max-w-screen-lg w-full mx-auto">
-                    <KMeansForm />
+                    <KMeansForm
+                        k={k}
+                        max_iter={max_iter}
+                    />
                     {plot && <Plot plotData={plot} />}
                 </div>
             </div>

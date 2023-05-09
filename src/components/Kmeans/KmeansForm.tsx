@@ -6,33 +6,41 @@ import FormEntry from '../FormEntry';
 import Loading from '../Loading';
 
 interface FormValues {
-    k: number;
-    max_iter: number;
+    k?: string | string[];
+    max_iter?: string | string[];
 }
 
-const KMeansForm = () => {
+const KMeansForm = ({ k, max_iter }: FormValues = {}) => {
     const router = useRouter();
     const [loading, setLoading] = useState<boolean>(false);
     const [_, setData] = useState<any>(null);
     const [formValues, setFormValues] = useState<FormValues>({
-        k: 3,
-        max_iter: 100,
+        k: k ?? "3",
+        max_iter: max_iter ?? "100",
     });
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value, type } = event.target;
         setFormValues({
             ...formValues,
-            [event.target.name]: Number(event.target.value),
+            [name]: type === 'number' ? Number(value) : value,
         });
     };
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setLoading(true);
+        const { ...rest } = formValues;
+        const convertedValues = Object.fromEntries(
+            Object.entries(rest).map(([key, value]) => [key, Number(value)])
+        );
         const result = await axios.post<any>('https://machine-learning-from-scratch-jensen.onrender.com', {
             algorithm: 'kmeans-clustering',
-            arguments: formValues,
+            arguments: {
+                ...convertedValues,
+            },
         });
+        event.preventDefault();
         setData(result.data);
         setLoading(false)
         router.push({

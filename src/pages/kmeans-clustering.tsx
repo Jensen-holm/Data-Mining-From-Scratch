@@ -2,7 +2,7 @@ import Head from 'next/head';
 import NavBar from '@/components/NavBar';
 import KMeansForm from '@/components/Kmeans/KmeansForm';
 
-export default function Kmeans() {
+export default function KmeansResults() {
     return (
         <>
             <Head>

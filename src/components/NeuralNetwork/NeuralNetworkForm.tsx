@@ -48,9 +48,6 @@ const NeuralNetworkForm = ({ epochs, activation_func, hidden_size, learning_rate
         });
         setData(result.data);
         setLoading(false);
-
-        // eventually we want to push the form values too so that
-        // the user sees the output and paraters for each similar request
         router.push({
             pathname: "/neural-network-results",
             query: result.data,
