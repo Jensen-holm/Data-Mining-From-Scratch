@@ -40,7 +40,11 @@ const NeuralNetworkForm = () => {
         });
         setData(result.data);
         setLoading(false);
-        router.push("/neural-network-results");
+
+        router.push({
+            pathname: "/neural-network-results",
+            query: result.data,
+        })
     };
 
     return (

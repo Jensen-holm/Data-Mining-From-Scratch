@@ -1,16 +1,8 @@
 import Head from 'next/head';
 import NavBar from '@/components/NavBar';
-import { useRouter } from 'next/router';
-
 import NeuralNetworkForm from '@/components/NeuralNetwork/NeuralNetworkForm';
-import LearningChart from '@/components/NeuralNetwork/LearningChart';
 
-
-export default function NeuralNetworkResults() {
-    // get the results from the query
-    const router = useRouter();
-    const { loss_history } = router.query;
-    const lossHistoryNumbers = Array.isArray(loss_history) ? loss_history.map(Number) : [];
+export default function NeuralNetwork() {
     return (
         <>
             <Head>
@@ -22,7 +14,6 @@ export default function NeuralNetworkResults() {
             <NavBar />
             <div className="flex flex-col items-center justify-center h-screen">
                 <NeuralNetworkForm />
-                <LearningChart lossHistory={lossHistoryNumbers} />
             </div>
         </>
     )
