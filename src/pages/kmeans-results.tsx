@@ -8,9 +8,8 @@ import Cluster from '@/components/Kmeans/Interface';
 export default function Kmeans() {
     const router = useRouter();
     const encodedResult = router.query.result as string;
-    const decodedResult = JSON.parse(decodeURIComponent(encodedResult));
+    const decodedResult = encodedResult ? JSON.parse(decodeURIComponent(encodedResult)) : null;
 
-    // convert decodedResult into an array of Cluster objects
     // convert decodedResult into an array of Cluster objects
     const clusters: Cluster[] = decodedResult.clusters.map((clusterData: any, index: number) => ({
         id: index,
@@ -26,10 +25,12 @@ export default function Kmeans() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <NavBar />
-            <div className="flex flex-col items-center justify-center h-screen">
-                <KMeansForm />
-                <ScatterPlot clusters={clusters} />
+            <div className="relative">
+                <NavBar />
+                <div className="flex flex-col items-center justify-center h-screen pt-20">
+                    <KMeansForm />
+                    <ScatterPlot clusters={clusters} />
+                </div>
             </div>
         </>
     );

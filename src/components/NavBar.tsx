@@ -9,7 +9,7 @@ const NavItem: React.FC<NavItemProps> = ({ href, label }: NavItemProps) => {
     return (
         <li>
             <Link href={href}>
-                <span className="text-gray-700 font-bold text-xl">{label}</span>
+                <span className="text-gray-700 font-bold text-xl sticky top-0 z-50">{label}</span>
             </Link>
         </li>
     );

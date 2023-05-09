@@ -6,8 +6,8 @@ const Loading = () => {
             <div className="bg-white p-4 rounded flex items-center">
                 <p>Loading</p>
                 <div className="w-4 h-4 rounded-full bg-black ml-2 animate-bounce"></div>
-                <div className="w-4 h-4 rounded-full bg-black ml-2 animate-bounce200"></div>
-                <div className="w-4 h-4 rounded-full bg-black ml-2 animate-bounce400"></div>
+                <div className="w-4 h-4 rounded-full bg-black ml-2 animate-bounce"></div>
+                <div className="w-4 h-4 rounded-full bg-black ml-2 animate-bounce"></div>
             </div>
         </div>
     );

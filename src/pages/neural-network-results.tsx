@@ -19,10 +19,12 @@ export default function NeuralNetworkResults() {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <NavBar />
-            <div className="flex flex-col items-center justify-center h-screen">
-                <NeuralNetworkForm />
-                <LearningChart lossHistory={lossHistoryNumbers} />
+            <div className="relative">
+                <NavBar />
+                <div className="flex flex-col items-center justify-center h-screen pt-20">
+                    <NeuralNetworkForm />
+                    <LearningChart lossHistory={lossHistoryNumbers} />
+                </div>
             </div>
         </>
     )
