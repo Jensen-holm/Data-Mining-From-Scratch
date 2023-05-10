@@ -35,15 +35,16 @@ const NeuralNetworkForm = ({ epochs, activation_func, hidden_size, learning_rate
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         setLoading(true);
-        const { activation_func, ...rest } = formValues;
+        const { activation_func, learning_rate, ...rest } = formValues;
         const convertedValues = Object.fromEntries(
-            Object.entries(rest).map(([key, value]) => [key, Number(value)])
+            Object.entries(rest).map(([key, value]) => [key, Array.isArray(value) ? parseInt(value[0]) : parseInt(value)])
         );
         const result = await axios.post<any>('https://machine-learning-from-scratch-jensen.onrender.com', {
             algorithm: 'neural-network',
             arguments: {
                 ...convertedValues,
-                activation_func
+                activation_func,
+                learning_rate: Number(learning_rate),
             },
         });
         setData(result.data);
@@ -74,7 +75,7 @@ const NeuralNetworkForm = ({ epochs, activation_func, hidden_size, learning_rate
                     labelText='Epochs'
                     max={1000}
                     min={1}
-                    dataType='number'
+                    dataType='float'
                     value={formValues.epochs}
                     handleChange={handleChange}
                 />
@@ -84,7 +85,7 @@ const NeuralNetworkForm = ({ epochs, activation_func, hidden_size, learning_rate
                     labelText='Hidden Size'
                     max={24}
                     min={2}
-                    dataType='number'
+                    dataType='float'
                     value={formValues.hidden_size}
                     handleChange={handleChange}
                 />
@@ -98,7 +99,7 @@ const NeuralNetworkForm = ({ epochs, activation_func, hidden_size, learning_rate
                     value={formValues.learning_rate}
                     handleChange={handleChange}
                 />
-                <SubmitButton txt='Run Neural Network' />
+                <SubmitButton txt='Train Neural Network' />
             </form>
             {loading && <Loading />}
         </div>
