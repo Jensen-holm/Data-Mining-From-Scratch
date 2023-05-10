@@ -13,7 +13,7 @@ export default function Kmeans() {
                 <title>Jensen: Data-Miner;</title>
                 <meta name="description" content="Machine Learning Models From Scratch" />
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/gvsu.png" />
             </Head>
             <div className="relative">
                 <NavBar />
