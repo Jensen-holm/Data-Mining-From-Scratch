@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Nav from '@/components/NavBar';
+import Image from 'next/image';
 
 export default function Home() {
   return (
@@ -10,7 +11,18 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/gvsu.png" />
       </Head>
-      <Nav />
+
+      <div className="relative">
+        <Nav />
+        <div className="flex flex-col items-center justify-center pt-16 max-w-screen-lg w-full mx-auto">
+          <Image
+            src="/pairplotirisEDA.png"
+            alt="pair plot exploratory data analysis of iris penguin data set"
+            height={400}
+            width={400}
+          />
+        </div>
+      </div>
     </>
   )
 }

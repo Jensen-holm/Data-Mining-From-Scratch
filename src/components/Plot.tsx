@@ -6,12 +6,12 @@ interface Props {
 
 const Plot = ({ plotData }: Props) => {
     return (
-        <div style={{ width: '500px', height: '500px' }}>
+        <div style={{ width: '400px', height: '400px' }}>
             <Image
                 alt="Scatter Plot"
                 src={`data:image/png;base64,${plotData}`}
-                width={500}
-                height={500}
+                width={400}
+                height={400}
             />
         </div>
     )
