@@ -17,7 +17,7 @@ export default function NeuralNetworkResults() {
         const fetchData = async () => {
             try {
                 const response = await axios.get(
-                    `https://machine-learning-from-scratch-jensen.onrender.com/neural-network/plot/${plot_key}`
+                    `https://machine-learning-from-scratch-jensen.onrender.com/neural-network/plots/${plot_key}`
                 );
                 setPlotData(response.data);
             } catch (error) {

@@ -122,6 +122,7 @@ const Nav: React.FC = () => {
                             <DropdownItem href="kmeans-clustering" text="Kmeans" />
                         </Dropdown>
                         <NavItem href="/neural-network" label="Neural-Network" />
+                        <NavItem href="/" label="Docs" />
                     </ul>
                 </div>
             </div>
