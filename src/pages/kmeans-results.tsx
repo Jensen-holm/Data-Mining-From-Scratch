@@ -15,7 +15,7 @@ export default function KMeans() {
         const fetchData = async () => {
             try {
                 const response = await axios.get(
-                    `https://machine-learning-from-scratch-jensen.onrender.com/kmeans-clustering/plots/${plot_key}`
+                    `https://machine-learning-from-scratch-jensen.onrender.com/plots/${plot_key}`
                 );
                 setPlotData(response.data);
             } catch (error) {
