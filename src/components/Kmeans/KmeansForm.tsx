@@ -34,7 +34,7 @@ const KMeansForm = ({ k, max_iter }: FormValues = {}) => {
         const convertedValues = Object.fromEntries(
             Object.entries(rest).map(([key, value]) => [key, Array.isArray(value) ? parseInt(value[0]) : parseInt(value)])
         );
-        const result = await axios.post<any>('https://machine-learning-from-scratch-jensen.onrender.com', {
+        const result = await axios.post<any>('https://machine-learning-from-scratch-jensen.onrender.com/kmeans-clustering', {
             algorithm: 'kmeans-clustering',
             arguments: {
                 ...convertedValues,

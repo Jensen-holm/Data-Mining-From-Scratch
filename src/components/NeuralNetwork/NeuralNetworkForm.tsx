@@ -39,7 +39,7 @@ const NeuralNetworkForm = ({ epochs, activation_func, hidden_size, learning_rate
         const convertedValues = Object.fromEntries(
             Object.entries(rest).map(([key, value]) => [key, Array.isArray(value) ? parseInt(value[0]) : parseInt(value)])
         );
-        const result = await axios.post<any>('https://machine-learning-from-scratch-jensen.onrender.com', {
+        const result = await axios.post<any>('https://machine-learning-from-scratch-jensen.onrender.com/neural-network', {
             algorithm: 'neural-network',
             arguments: {
                 ...convertedValues,
