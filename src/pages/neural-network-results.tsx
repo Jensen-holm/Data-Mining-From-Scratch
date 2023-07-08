@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import NavBar from '@/components/NavBar';
 import { useRouter } from 'next/router';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 import NeuralNetworkForm from '@/components/NeuralNetwork/NeuralNetworkForm';
 import Plot from '@/components/Plot';
@@ -8,7 +10,25 @@ import Plot from '@/components/Plot';
 
 export default function NeuralNetworkResults() {
     const router = useRouter();
-    const { plot, mse, learning_rate, epochs, hidden_size, activation_func } = router.query;
+    const { plot_key, mse, learning_rate, epochs, hidden_size, activation_func } = router.query;
+    const [plotData, setPlotData] = useState<any>(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get(
+                    `https://machine-learning-from-scratch-jensen.onrender.com/neural-network/plot/${plot_key}`
+                );
+                setPlotData(response.data);
+            } catch (error) {
+                // Handle error
+            }
+        };
+
+        if (plot_key) {
+            fetchData();
+        }
+    }, [plot_key]);
     return (
         <>
             <Head>
@@ -28,7 +48,7 @@ export default function NeuralNetworkResults() {
                     activation_func={activation_func}
                 />
                 <h4>Mean Squared Error: {mse}</h4>
-                {plot && <Plot plotData={plot} />}
+                {plotData && <Plot plotData={plotData} />}
             </div>
         </>
     );

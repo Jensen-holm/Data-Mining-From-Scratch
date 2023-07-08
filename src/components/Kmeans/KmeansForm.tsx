@@ -13,7 +13,7 @@ interface FormValues {
 const KMeansForm = ({ k, max_iter }: FormValues = {}) => {
     const router = useRouter();
     const [loading, setLoading] = useState<boolean>(false);
-    const [_, setData] = useState<any>(null);
+    const [data, setData] = useState<any>(null);
     const [formValues, setFormValues] = useState<FormValues>({
         k: k ?? "3",
         max_iter: max_iter ?? "100",
@@ -35,7 +35,6 @@ const KMeansForm = ({ k, max_iter }: FormValues = {}) => {
             Object.entries(rest).map(([key, value]) => [key, Array.isArray(value) ? parseInt(value[0]) : parseInt(value)])
         );
         const result = await axios.post<any>('https://machine-learning-from-scratch-jensen.onrender.com/kmeans-clustering', {
-            algorithm: 'kmeans-clustering',
             arguments: {
                 ...convertedValues,
             },
@@ -45,10 +44,9 @@ const KMeansForm = ({ k, max_iter }: FormValues = {}) => {
         setLoading(false)
         router.push({
             pathname: "kmeans-results",
-            query: result.data,
+            query: data,
         })
     };
-
     return (
         <div className="w-96 p-8 bg-gray-100 rounded-md">
             <h1 className="text-2xl font-bold mb-4">KMeans Clustering</h1>
